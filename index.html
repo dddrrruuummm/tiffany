@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TIFFANYKY LLC | B2B Home Improvement Supply</title>
+    <meta
+      name="description"
+      content="B2B home improvement supply website for wholesale building materials, fixtures, hardware, packed bulk orders, and trade RFQs."
+    />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root {
+        --bg: #fdfdfb;
+        --ink: #172126;
+        --muted: #5d6b69;
+        --line: #d9ded9;
+        --soft: #f4f6f2;
+        --dark: #10191d;
+        --dark-soft: #172126;
+        --teal: #0f766e;
+        --wood: #c9853d;
+        --white: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .wrap {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid var(--line);
+        background: color-mix(in srgb, var(--bg) 92%, transparent);
+        backdrop-filter: blur(14px);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 64px;
+        gap: 28px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .mark {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        background: var(--teal);
+        color: white;
+        font-weight: 900;
+        font-size: 14px;
+      }
+
+      .brand-name,
+      .nav-links a,
+      .btn,
+      .kicker {
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .brand-name {
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+      }
+
+      .hero {
+        position: relative;
+        min-height: calc(100vh - 64px);
+        display: grid;
+        align-items: center;
+        overflow: hidden;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-bg,
+      .hero-bg::after {
+        position: absolute;
+        inset: 0;
+      }
+
+      .hero-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero-bg::after {
+        content: "";
+        background: linear-gradient(
+          90deg,
+          rgba(9, 18, 22, 0.94) 0%,
+          rgba(9, 18, 22, 0.78) 42%,
+          rgba(9, 18, 22, 0.34) 76%,
+          rgba(9, 18, 22, 0.12) 100%
+        );
+      }
+
+      .hero-content {
+        position: relative;
+        color: white;
+        padding: 88px 0;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.32);
+        background: rgba(255, 255, 255, 0.1);
+        padding: 10px 12px;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 900px;
+        margin-top: 28px;
+        font-size: clamp(48px, 8vw, 104px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .hero-text {
+        max-width: 680px;
+        margin-top: 28px;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: clamp(18px, 2vw, 21px);
+        line-height: 1.55;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 36px;
+      }
+
+      .btn {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 24px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .btn-primary {
+        background: var(--teal);
+        color: white;
+      }
+
+      .btn-outline {
+        border: 1px solid rgba(255, 255, 255, 0.58);
+        color: white;
+      }
+
+      .statbar {
+        border-bottom: 1px solid var(--line);
+        background: var(--soft);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .stat {
+        padding: 30px 28px;
+        border-left: 1px solid var(--line);
+      }
+
+      .stat:first-child {
+        border-left: 0;
+        padding-left: 0;
+      }
+
+      .label,
+      .kicker {
+        color: var(--teal);
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .label {
+        color: var(--muted);
+      }
+
+      .stat strong {
+        display: block;
+        margin-top: 8px;
+        font-size: 24px;
+        line-height: 1.2;
+      }
+
+      section {
+        padding: 92px 0;
+      }
+
+      .section-head {
+        max-width: 780px;
+        margin-bottom: 42px;
+      }
+
+      h2 {
+        margin-top: 12px;
+        font-size: clamp(36px, 5vw, 58px);
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        background: var(--bg);
+      }
+
+      .card img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        background: var(--soft);
+      }
+
+      .card-body {
+        padding: 28px;
+      }
+
+      h3 {
+        font-size: 25px;
+        line-height: 1.15;
+      }
+
+      .card p,
+      .process p,
+      .contact-card p,
+      .intro {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .dark {
+        background: var(--dark);
+        color: white;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .dark .intro,
+      .dark .card p {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 0.68fr 1fr;
+        gap: 56px;
+        align-items: start;
+      }
+
+      .cap-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+      }
+
+      .cap {
+        background: var(--dark-soft);
+        padding: 30px;
+      }
+
+      .cap span {
+        color: var(--teal);
+        font-size: 28px;
+        font-weight: 900;
+      }
+
+      .process-list {
+        display: grid;
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+
+      .process {
+        display: grid;
+        grid-template-columns: 82px 1fr;
+        gap: 18px;
+        background: var(--bg);
+        padding: 28px;
+      }
+
+      .num {
+        color: var(--teal);
+        font-size: 32px;
+        font-weight: 900;
+      }
+
+      .soft {
+        background: var(--soft);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 0.72fr 1fr;
+        gap: 48px;
+        align-items: start;
+      }
+
+      .contact-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+
+      .contact-card {
+        background: var(--bg);
+        padding: 26px;
+      }
+
+      .contact-card a {
+        display: block;
+        margin-top: 12px;
+        color: var(--ink);
+        font-size: 15px;
+        font-weight: 900;
+        line-height: 1.5;
+        text-decoration-color: var(--teal);
+        text-underline-offset: 4px;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 28px 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .foot {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .foot a {
+        color: var(--ink);
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      @media (max-width: 820px) {
+        .nav-links {
+          display: none;
+        }
+
+        .stats,
+        .cards,
+        .split,
+        .cap-grid,
+        .contact-grid,
+        .contact-cards {
+          grid-template-columns: 1fr;
+        }
+
+        .stat {
+          border-left: 0;
+          border-top: 1px solid var(--line);
+          padding-left: 0;
+        }
+
+        .stat:first-child {
+          border-top: 0;
+        }
+
+        .process {
+          grid-template-columns: 1fr;
+        }
+
+        .foot {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="wrap nav">
+        <a class="brand" href="#home" aria-label="TIFFANYKY LLC home">
+          <span class="mark">TK</span>
+          <span class="brand-name">TIFFANYKY LLC</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#products">Products</a>
+          <a href="#capabilities">Capabilities</a>
+          <a href="#process">RFQ Process</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="hero-bg">
+          <img src="assets/showroom-hero.png" alt="Modern home improvement showroom with organized building materials" />
+        </div>
+        <div class="wrap hero-content">
+          <p class="pill">B2B home improvement supply</p>
+          <h1>Wholesale goods for home center buyers.</h1>
+          <p class="hero-text">
+            TIFFANYKY LLC helps trade buyers source building materials, home improvement fixtures,
+            hardware, and packed bulk orders for resale, renovation programs, and contractor supply.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#products">Browse product scope</a>
+            <a class="btn btn-outline" href="#contact">Request a quote</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="statbar">
+        <div class="wrap stats">
+          <div class="stat">
+            <p class="label">Buyer focus</p>
+            <strong>Wholesale and trade accounts</strong>
+          </div>
+          <div class="stat">
+            <p class="label">Supply scope</p>
+            <strong>Materials, fixtures, hardware</strong>
+          </div>
+          <div class="stat">
+            <p class="label">Order style</p>
+            <strong>Cartons, pallets, mixed-category RFQs</strong>
+          </div>
+        </div>
+      </div>
+
+      <section id="products">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Product scope</p>
+            <h2>Practical categories for B2B home improvement supply.</h2>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <img src="assets/category-materials.png" alt="Wholesale building materials arranged in warehouse shelving" />
+              <div class="card-body">
+                <h3>Building materials</h3>
+                <p>Lumber, sheet goods, trim, surface materials, tile samples, and renovation basics for retail and project supply.</p>
+              </div>
+            </article>
+            <article class="card">
+              <img src="assets/category-fixtures.png" alt="Showroom display of faucets, cabinet hardware, hinges, handles, and lighting fixtures" />
+              <div class="card-body">
+                <h3>Fixtures and hardware</h3>
+                <p>Cabinet pulls, hinges, handles, faucets, lighting, bath accessories, and finish sets for coordinated purchasing.</p>
+              </div>
+            </article>
+            <article class="card">
+              <img src="assets/category-logistics.png" alt="Bulk home improvement supplies packed on pallets in a loading warehouse" />
+              <div class="card-body">
+                <h3>Packed bulk orders</h3>
+                <p>Carton-packed and pallet-ready goods for distributors, contractors, and multi-site purchasing programs.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="capabilities" class="dark">
+        <div class="wrap split">
+          <div>
+            <p class="kicker">B2B capability</p>
+            <h2>Built for buyers who need workable supply, not retail browsing.</h2>
+            <p class="intro">
+              The site helps procurement teams quickly understand what can be sourced, how orders can be grouped,
+              and what to include in a quote request.
+            </p>
+          </div>
+          <div class="cap-grid">
+            <article class="cap">
+              <span>01</span>
+              <h3>Mixed-category sourcing</h3>
+              <p>Combine materials, fixtures, hardware, and accessories into practical order groups.</p>
+            </article>
+            <article class="cap">
+              <span>02</span>
+              <h3>Spec and quantity checks</h3>
+              <p>Clarify sizes, finishes, carton counts, and substitution options before purchasing.</p>
+            </article>
+            <article class="cap">
+              <span>03</span>
+              <h3>Packaging coordination</h3>
+              <p>Support carton labeling, palletization, and shipment-ready order preparation.</p>
+            </article>
+            <article class="cap">
+              <span>04</span>
+              <h3>B2B account support</h3>
+              <p>Built for wholesale buyers, contractors, property teams, and channel partners.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="wrap split">
+          <div>
+            <p class="kicker">RFQ process</p>
+            <h2>Clear inputs make faster quotes.</h2>
+            <p class="intro">
+              For the first inquiry, buyers can share a simple category list, estimated quantities,
+              finish requirements, destination, and target delivery timing.
+            </p>
+          </div>
+          <div class="process-list">
+            <article class="process">
+              <div class="num">01</div>
+              <div>
+                <h3>Send an RFQ</h3>
+                <p>Share target categories, quantities, finish preferences, and delivery window.</p>
+              </div>
+            </article>
+            <article class="process">
+              <div class="num">02</div>
+              <div>
+                <h3>Confirm the supply plan</h3>
+                <p>Review available options, packaging needs, and commercial terms.</p>
+              </div>
+            </article>
+            <article class="process">
+              <div class="num">03</div>
+              <div>
+                <h3>Prepare shipment</h3>
+                <p>Coordinate packing, documentation basics, and order handoff.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="soft">
+        <div class="wrap contact-grid">
+          <div>
+            <p class="kicker">Trade inquiry</p>
+            <h2>Send the categories, quantities, and timeline.</h2>
+          </div>
+          <div class="contact-cards">
+            <article class="contact-card">
+              <h3>Email</h3>
+              <a href="mailto:info@tiffanykyhome.org">info@tiffanykyhome.org</a>
+            </article>
+            <article class="contact-card">
+              <h3>Fulfillment needs</h3>
+              <p>Carton packing, pallet quantities, delivery window, and shipment notes.</p>
+            </article>
+            <article class="contact-card">
+              <h3>Website</h3>
+              <a href="https://tiffanykyhome.org">tiffanykyhome.org</a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap foot">
+        <p>© 2026 TIFFANYKY LLC. B2B home improvement supply.</p>
+        <p>
+          <a href="https://tiffanykyhome.org">tiffanykyhome.org</a>
+          ·
+          <a href="mailto:info@tiffanykyhome.org">info@tiffanykyhome.org</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
